@@ -1,3 +1,23 @@
+# Handshake Domain Support
+
+This fork hijacks the way certificates are generated to add support for generating self signed certificates to be used in Conjunction with [Handshake Domains](https://handshake.org) The TLSA DNS record is generated in the logs and in `/etc/letsencrypt/<SERVERNAME>_TLSA.txt`
+
+## Generate a self signed certificate:
+```
+CERT=self
+```
+
+## Generate using specified ACME server using these two environment variables:
+```
+CERT=acme
+ACME=https://acme.htools.work/directory
+```
+## Generate using Lets Encrypt (Not Handshake)
+```
+CERT=letsencrypt
+```
+
+
 # SSL Front-End Proxy With Automatic Free Certificate Management
 
 Zero configuration required - set up SSL in 30 seconds. Out of the box A rating at SSL labs. HTTP/2 enabled for increased performance.
