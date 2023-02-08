@@ -51,6 +51,7 @@ Create a docker-compose.yml file as follows:
         UPSTREAM: 127.0.0.1:8080
         SERVERNAME: test.example.com
         EXTRANAMES: www.test.example.com,test2.example.com
+        CERT=self
       ports:
         - "80:80"
         - "443:443"
