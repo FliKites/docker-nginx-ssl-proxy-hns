@@ -2,30 +2,28 @@ name: Docker Image CI
 
 on:
   push:
-    branches: 
-      - dev  # Trigger on pushes to the dev branch
+    branches: [ "dev" ]
   pull_request:
-    branches: 
-      - dev  # Trigger on pull requests targeting the dev branch
+    branches: [ "dev" ]
 
 jobs:
+
   push_to_registry:
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
-
     steps:
       - name: Check out the repo
         uses: actions/checkout@v3
-
+      
       - name: Log in to Docker Hub
-        uses: docker/login-action@v2  # Updated to the latest version
+        uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-
+    
       - name: Build and push Docker image
-        uses: docker/build-push-action@v3  # Updated to the latest version
+        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         with:
           context: .
-          push: true  # Push the image to Docker Hub
-          tags: wirewrex/nginx-hns:33443  # Replace with your desired image name and tag
+          push: true
+          tags: wirewrex/nginx-hns:p33443
